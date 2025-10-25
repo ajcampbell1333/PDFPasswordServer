@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  pdf-server:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - JWT_SECRET=dev-secret-key-change-in-production
+      - PDF_PASSWORD=dev-password
+      - ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
+    volumes:
+      - ./pdfs:/app/pdfs
+      - ./.env:/app/.env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
