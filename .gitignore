@@ -15,6 +15,10 @@ yarn-error.log*
 pdfs/*.pdf
 pdfs/*.PDF
 
+# PNG files (high-res page renders for iOS)
+pngs/*.png
+pngs/*.PNG
+
 # Logs
 logs
 *.log
@@ -108,5 +112,6 @@ settings.local.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+
 
 
